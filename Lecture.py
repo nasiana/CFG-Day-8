@@ -27,5 +27,26 @@ for i in range(5):
 
 print(user_encoded)
 
-# just finished for loops, currently at 39:22
-# now going onto while loops
+# While Loops
+
+# exercise
+
+from datetime import datetime, timedelta
+
+# Using current time
+pcn_date = input("Enter the date you were issued PCN as dd/mm/yyyy")
+# printing initial_date
+print("pcn_date", str(pcn_date))
+
+pcn_date_formatted = datetime.strptime(pcn_date, '%d%m%Y')
+
+# Calculating future dates
+# for two years
+future_date_after_14days = pcn_date_formatted + timedelta(days=14)
+
+# printing calculated future_dates
+print('future_date_after_14days', str(future_date_after_14days))
+
+print("If you pay the PCN penalty by *{}, the amount will be reduced to £65".format(future_date_after_14days))
+
+# make this an if-else statement
