@@ -33,18 +33,17 @@ print(user_encoded)
 
 from datetime import datetime, timedelta
 
-# Using current time
+# The PCN issue date
 pcn_date = input("Enter the date you were issued PCN as DDMMYYYY")
 pcn_date_formatted = datetime.strptime(pcn_date, '%d%m%Y')
 pcn_date_readable = pcn_date_formatted.date().strftime("%d %b %Y")
 # printing initial_date
 print("The PCN was issued: {}".format(pcn_date_readable))
 
-# Calculating future dates
-# for two years
+# The deadline for the reduced PCN charge
 deadline = pcn_date_formatted + timedelta(days=14)
 deadline_formatted = deadline.date().strftime("%d %b %Y")
-# printing calculated future_dates
+# printing calculated deadline for reduced PCN charge
 print("The deadline for paying the reduced PCN charge is: {}".format(deadline_formatted))
 
 print("If you pay the PCN penalty by *{}, the amount will be reduced to £65. After that it will be £130"\
@@ -54,6 +53,8 @@ print("If you pay the PCN penalty by *{}, the amount will be reduced to £65. Af
 import datetime
 current_time = datetime.datetime.now()
 print("Today's date:", current_time)
+current_time_readable = current_time.date().strftime("%d %b %Y")
+print("The current time is {}".format(current_time_readable))
 
 if current_time < deadline:
     print("As you have paid by {}, you will only have to pay a PCN fine of £65".format(deadline_formatted))
