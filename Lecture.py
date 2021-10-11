@@ -21,7 +21,7 @@ for i in range(5):
 
 # exercise, did myself
 user_word = input("Give me a word")
-for i in range(5):
+for i in user_word:
     user_encoding = "ABCDEF"
     user_encoded = user_encoding.join(user_word)
 
