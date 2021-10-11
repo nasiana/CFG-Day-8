@@ -34,19 +34,33 @@ print(user_encoded)
 from datetime import datetime, timedelta
 
 # Using current time
-pcn_date = input("Enter the date you were issued PCN as dd/mm/yyyy")
-# printing initial_date
-print("pcn_date", str(pcn_date))
-
+pcn_date = input("Enter the date you were issued PCN as DDMMYYYY")
 pcn_date_formatted = datetime.strptime(pcn_date, '%d%m%Y')
+pcn_date_readable = pcn_date_formatted.date().strftime("%d %b %Y")
+# printing initial_date
+print("The PCN was issued: {}".format(pcn_date_readable))
 
 # Calculating future dates
 # for two years
-future_date_after_14days = pcn_date_formatted + timedelta(days=14)
-
+deadline = pcn_date_formatted + timedelta(days=14)
+deadline_formatted = deadline.date().strftime("%d %b %Y")
 # printing calculated future_dates
-print('future_date_after_14days', str(future_date_after_14days))
+print("The deadline for paying the reduced PCN charge is: {}".format(deadline_formatted))
 
-print("If you pay the PCN penalty by *{}, the amount will be reduced to £65".format(future_date_after_14days))
+print("If you pay the PCN penalty by *{}, the amount will be reduced to £65. After that it will be £130"\
+    .format(deadline_formatted))
 
 # make this an if-else statement
+import datetime
+current_time = datetime.datetime.now()
+print("Today's date:", current_time)
+
+if current_time < deadline:
+    print("As you have paid by {}, you will only have to pay a PCN fine of £65".format(deadline_formatted))
+else:
+    print("You were issued a PCN on {}. As you have failed to pay by {}, you must pay a PCN fine of £130"\
+          .format(pcn_date_readable, deadline_formatted))
+
+
+
+    
